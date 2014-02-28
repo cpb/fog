@@ -2,19 +2,6 @@ module Fog
   module Storage
     class AWS
       class Real
-
-        # Create an S3 bucket
-        #
-        # @param bucket_name [String] name of bucket to create
-        # @option options [Hash] config arguments for bucket.  Defaults to {}.
-        # @option options LocationConstraint [Symbol] sets the location for the bucket
-        # @option options x-amz-acl [String] Permissions, must be in ['private', 'public-read', 'public-read-write', 'authenticated-read']
-        #
-        # @return [Excon::Response] response:
-        #   * status [Integer] 200
-        #
-        # @see http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTBucketPUT.html
-        # 
         def put_bucket(bucket_name, options = {})
           if location_constraint = options.delete('LocationConstraint')
             data =
