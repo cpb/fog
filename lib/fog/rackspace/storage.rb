@@ -5,10 +5,6 @@ module Fog
     class Rackspace < Fog::Service
       include Fog::Rackspace::Errors
 
-      class ServiceError < Fog::Rackspace::Errors::ServiceError; end
-      class InternalServerError < Fog::Rackspace::Errors::InternalServerError; end
-      class BadRequest < Fog::Rackspace::Errors::BadRequest; end
-
       requires :rackspace_api_key, :rackspace_username
       recognizes :rackspace_auth_url, :rackspace_servicenet, :rackspace_cdn_ssl, :persistent, :rackspace_region
       recognizes :rackspace_temp_url_key, :rackspace_storage_url, :rackspace_cdn_url
@@ -41,6 +37,10 @@ module Fog
       request :put_static_obj_manifest
       request :post_set_meta_temp_url_key
       request :extract_archive
+
+      class ServiceError < Fog::Rackspace::Errors::ServiceError; end
+      class InternalServerError < Fog::Rackspace::Errors::InternalServerError; end
+      class BadRequest < Fog::Rackspace::Errors::BadRequest; end
 
       module Common
         def apply_options(options)
