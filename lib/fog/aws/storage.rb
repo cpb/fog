@@ -5,44 +5,6 @@ module Fog
     class AWS < Fog::Service
       extend Fog::AWS::CredentialFetcher::ServiceMethods
 
-      COMPLIANT_BUCKET_NAMES = /^(?:[a-z]|\d(?!\d{0,2}(?:\.\d{1,3}){3}$))(?:[a-z0-9]|\.(?![\.\-])|\-(?![\.])){1,61}[a-z0-9]$/
-
-      DEFAULT_REGION = 'us-east-1'
-
-      DEFAULT_SCHEME = 'https'
-      DEFAULT_SCHEME_PORT = {
-        'http' => 80,
-        'https' => 443
-      }
-
-      VALID_QUERY_KEYS = %w[
-        acl
-        cors
-        delete
-        lifecycle
-        location
-        logging
-        notification
-        partNumber
-        policy
-        requestPayment
-        response-cache-control
-        response-content-disposition
-        response-content-encoding
-        response-content-language
-        response-content-type
-        response-expires
-        restore
-        tagging
-        torrent
-        uploadId
-        uploads
-        versionId
-        versioning
-        versions
-        website
-      ]
-
       requires :aws_access_key_id, :aws_secret_access_key
       recognizes :endpoint, :region, :host, :port, :scheme, :persistent, :use_iam_profile, :aws_session_token, :aws_credentials_expire_at, :path_style
 
@@ -106,6 +68,46 @@ module Fog
       request :put_request_payment
       request :sync_clock
       request :upload_part
+
+
+      COMPLIANT_BUCKET_NAMES = /^(?:[a-z]|\d(?!\d{0,2}(?:\.\d{1,3}){3}$))(?:[a-z0-9]|\.(?![\.\-])|\-(?![\.])){1,61}[a-z0-9]$/
+
+      DEFAULT_REGION = 'us-east-1'
+
+      DEFAULT_SCHEME = 'https'
+      DEFAULT_SCHEME_PORT = {
+        'http' => 80,
+        'https' => 443
+      }
+
+      VALID_QUERY_KEYS = %w[
+        acl
+        cors
+        delete
+        lifecycle
+        location
+        logging
+        notification
+        partNumber
+        policy
+        requestPayment
+        response-cache-control
+        response-content-disposition
+        response-content-encoding
+        response-content-language
+        response-content-type
+        response-expires
+        restore
+        tagging
+        torrent
+        uploadId
+        uploads
+        versionId
+        versioning
+        versions
+        website
+      ]
+
 
       module Utils
 
